@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { BREAKPOINT } from "configs/breakpoint";
 
 const useDeviceType = () => {
-  const [deviceType, setDeviceType] = useState<DeviceType>("WEB");
+  const [deviceType, setDeviceType] = useState<DeviceType>("DESKTOP");
 
   useEffect(() => {
     const root = document.querySelector(".App");
@@ -18,10 +18,10 @@ const useDeviceType = () => {
       const { borderBoxSize } = entry;
       const { inlineSize } = borderBoxSize[0];
 
-      if (inlineSize >= BREAKPOINT.WEB) {
-        setDeviceType("WEB");
+      if (inlineSize >= BREAKPOINT.DESKTOP) {
+        setDeviceType("DESKTOP");
       } else if (
-        inlineSize < BREAKPOINT.WEB &&
+        inlineSize < BREAKPOINT.DESKTOP &&
         inlineSize >= BREAKPOINT.TABLET
       ) {
         setDeviceType("TABLET");

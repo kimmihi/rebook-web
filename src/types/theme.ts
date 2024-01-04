@@ -14,4 +14,4 @@ export type ColorValue = {
   contrastText: string;
 };
 
-export type DeviceType = "WEB" | "TABLET" | "PHONE";
+export type DeviceType = "DESKTOP" | "TABLET" | "PHONE";
