@@ -13,3 +13,5 @@ export type ColorValue = {
   dark: string;
   contrastText: string;
 };
+
+export type DeviceType = "WEB" | "TABLET" | "PHONE";
