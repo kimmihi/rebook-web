@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { MOBILE_APP_BAR_HEIGHT } from "configs/theme";
 
+import Button from "components/Button";
 import Typography from "components/Typography";
 
 const Header = styled.header`
@@ -19,6 +20,7 @@ const AppBar = () => {
   return (
     <Header>
       <Typography variant="title">Rebook</Typography>
+      <Button>내 정보</Button>
     </Header>
   );
 };

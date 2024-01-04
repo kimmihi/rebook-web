@@ -1,25 +1,22 @@
 import type { ReactNode } from "react";
 
-import useDeviceType from "hooks/useDeviceType";
+import styled from "styled-components";
 
-import DesktopDashboardLayout from "./DesktopDashboardLayout";
-import MobileDashboardLayout from "./MobileDashboardLayout";
+import AppBar from "./AppBar";
+import Main from "./Main";
 
 interface Props {
   children?: ReactNode | ReactNode[];
 }
 
-const DashboardLayout = ({ children }: Props) => {
-  const { deviceType } = useDeviceType();
+const Container = styled.div``;
 
+const DashboardLayout = ({ children }: Props) => {
   return (
-    <>
-      {deviceType === "DESKTOP" ? (
-        <DesktopDashboardLayout>{children}</DesktopDashboardLayout>
-      ) : (
-        <MobileDashboardLayout>{children}</MobileDashboardLayout>
-      )}
-    </>
+    <Container>
+      <AppBar />
+      <Main>{children}</Main>
+    </Container>
   );
 };
 
