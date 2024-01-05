@@ -9,7 +9,7 @@ interface CustomAxiosRequestConfig<D = any>
 }
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 const request = async ({
