@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { signIn } from "api/auth";
+import { login } from "store/slices/auth";
+
+import { useDispatch } from "store";
+
 import Typography from "components/Typography";
 
 import SignInForm from "./Form";
@@ -18,12 +22,14 @@ const Container = styled.div`
 `;
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (formFieldValues: SignInFormFieldValues) => {
     try {
       const { accessToken } = await signIn(formFieldValues);
       localStorage.setItem("accessToken", accessToken);
+      dispatch(login());
       navigate("/");
     } catch {}
   };
