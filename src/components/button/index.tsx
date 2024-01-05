@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { colors } from "theme";
 
 type Variant = "text" | "contained" | "outlined";
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   color?: Color;
 }
@@ -51,7 +51,11 @@ const OutlinedButton = styled(BaseButton)<{ color: Color }>`
   border: 1px solid ${({ color }) => colors[color].main};
 `;
 
-const Button = ({ variant = "text", color = "primary", ...props }: Props) => {
+const Button = ({
+  variant = "text",
+  color = "primary",
+  ...props
+}: ButtonProps) => {
   const { disabled } = props;
 
   if (disabled) {
