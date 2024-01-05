@@ -14,7 +14,7 @@ const Box = styled.div`
   position: relative;
 `;
 
-const Input = styled.input<{ error: boolean }>`
+const Input = styled.input<{ $error: boolean }>`
   width: 100%;
   height: 48px;
   font-size: 1rem;
@@ -23,7 +23,7 @@ const Input = styled.input<{ error: boolean }>`
   line-height: 24px;
   margin: 0;
   outline: none;
-  border: ${({ error }) => (error ? `1px solid ${colors.error.main}` : 0)};
+  border: ${({ $error }) => ($error ? `1px solid ${colors.error.main}` : 0)};
   color: ${colors.gray.contrastText};
   background-color: ${colors.gray.light};
 `;
@@ -40,7 +40,7 @@ const TextField = (
 ) => {
   return (
     <Box>
-      <Input aria-label={label} ref={ref} error={error} {...props} />
+      <Input {...props} aria-label={label} ref={ref} $error={error} />
       {error && helperText && <HelperText>{helperText}</HelperText>}
     </Box>
   );
