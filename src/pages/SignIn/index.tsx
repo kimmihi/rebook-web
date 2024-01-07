@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { signIn } from "api/auth";
-import { login } from "store/slices/auth";
 
-import { useDispatch } from "store";
+import accessToken from "utils/accessToken";
 
 import Typography from "components/Typography";
 
@@ -22,16 +21,16 @@ const Container = styled.div`
 `;
 
 const SignIn = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (formFieldValues: SignInFormFieldValues) => {
     try {
-      const { accessToken } = await signIn(formFieldValues);
-      localStorage.setItem("accessToken", accessToken);
-      dispatch(login());
+      const { accessToken: token } = await signIn(formFieldValues);
+      accessToken.setToken(token);
       navigate("/");
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
