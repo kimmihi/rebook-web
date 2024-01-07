@@ -4,8 +4,20 @@ export type Color =
   | "info"
   | "warning"
   | "error"
-  | "success"
-  | "gray";
+  | "success";
+
+export interface GrayColor {
+  10: string;
+  20: string;
+  30: string;
+  40: string;
+  50: string;
+  60: string;
+  70: string;
+  80: string;
+  90: string;
+  100: string;
+}
 
 export type ColorValue = {
   light: string;

@@ -25,8 +25,8 @@ const BaseButton = styled.button`
 `;
 
 const DisabledButton = styled(BaseButton)`
-  color: ${colors.gray.contrastText};
-  background-color: ${colors.gray.light};
+  color: ${colors.gray[100]};
+  background-color: ${colors.gray[30]};
   cursor: default;
 `;
 

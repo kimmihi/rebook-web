@@ -24,8 +24,8 @@ const Input = styled.input<{ $error: boolean }>`
   margin: 0;
   outline: none;
   border: ${({ $error }) => ($error ? `1px solid ${colors.error.main}` : 0)};
-  color: ${colors.gray.contrastText};
-  background-color: ${colors.gray.light};
+  color: ${colors.gray[100]};
+  background-color: ${colors.gray[20]};
 `;
 
 const HelperText = styled.p`

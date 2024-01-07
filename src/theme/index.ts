@@ -1,6 +1,10 @@
-import type { Color, ColorValue } from "types/theme";
+import type { Color, ColorValue, GrayColor } from "types/theme";
 
-export const colors: { [key in Color]: ColorValue } = {
+interface ColorMap extends Record<Color, ColorValue> {
+  gray: GrayColor;
+}
+
+export const colors: ColorMap = {
   primary: {
     light: "#424d57",
     main: "#242a30",
@@ -38,9 +42,15 @@ export const colors: { [key in Color]: ColorValue } = {
     contrastText: "#f0f2f4",
   },
   gray: {
-    light: "#e2e6e9",
-    main: "#c5cdd3",
-    dark: "#a8b4bd",
-    contrastText: "#424d57",
+    10: "#f0f2f4",
+    20: "#e2e6e9",
+    30: "#c5cdd3",
+    40: "#b6c0c8",
+    50: "#a8b4bd",
+    60: "#99a7b2",
+    70: "#7c8e9c",
+    80: "#6e8291",
+    90: "#637583",
+    100: "#586874",
   },
 };
