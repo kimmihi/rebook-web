@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import { FaUserAlt } from "react-icons/fa";
 
@@ -20,12 +22,17 @@ const Header = styled.header`
 `;
 
 const AppBar = () => {
+  const navigate = useNavigate();
   const isLoggedIn = accessToken.getToken() === null ? false : true;
+
+  const handleClickMyInfo = () => {
+    navigate("/me");
+  };
   return (
     <Header>
       <Typography variant="title">Rebook</Typography>
       {isLoggedIn && (
-        <IconButton>
+        <IconButton onClick={handleClickMyInfo}>
           <FaUserAlt />
         </IconButton>
       )}
