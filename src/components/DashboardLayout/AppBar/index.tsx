@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { FaUserAlt } from "react-icons/fa";
 
 import { APP_BAR_HEIGHT } from "configs/theme";
 
-import Button from "components/Button";
+import accessToken from "utils/accessToken";
+
+import IconButton from "components/IconButton";
 import Typography from "components/Typography";
 
 const Header = styled.header`
@@ -17,10 +20,15 @@ const Header = styled.header`
 `;
 
 const AppBar = () => {
+  const isLoggedIn = accessToken.getToken() === null ? false : true;
   return (
     <Header>
       <Typography variant="title">Rebook</Typography>
-      <Button>내 정보</Button>
+      {isLoggedIn && (
+        <IconButton>
+          <FaUserAlt />
+        </IconButton>
+      )}
     </Header>
   );
 };
