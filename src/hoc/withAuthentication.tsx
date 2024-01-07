@@ -1,20 +1,15 @@
 import type { ComponentType } from "react";
 
-import { useNavigate } from "react-router-dom";
-
-import { useSelector } from "store";
-import { selectIsLoggedIn } from "store/slices/auth";
+import SignIn from "pages/SignIn";
 
 const withAuthentication = <P extends {}>(
   WrappedComponent: ComponentType<JSX.IntrinsicAttributes & P>
 ) => {
   const WithAuthentic = (props: JSX.IntrinsicAttributes & P) => {
-    const isLoggedIn = useSelector(selectIsLoggedIn);
-    const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("accessToken") ? true : false;
 
     if (isLoggedIn === false) {
-      navigate("/signin");
-      return;
+      return <SignIn />;
     }
 
     return <WrappedComponent {...props} />;
