@@ -20,7 +20,7 @@ export const authSlice = createSlice({
         isLoggedIn: true,
       };
     },
-    logout: () => initialState,
+    logout: (logout: AuthState) => initialState,
   },
 });
 
