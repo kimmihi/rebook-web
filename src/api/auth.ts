@@ -1,4 +1,5 @@
 import type { SignInFormFieldValues, SignUpFormFieldValues } from "types/auth";
+import type { User } from "types/user";
 import request from "./request";
 
 export const signIn = async ({ userId, password }: SignInFormFieldValues) => {
@@ -24,11 +25,11 @@ export const signUp = async (newUser: SignUpFormFieldValues) => {
   return response;
 };
 
-export const getMyInfo = async () => {
+export const getMyInfo = async (): Promise<User> => {
   const response = await request({
     url: "/users/me",
     method: "get",
   });
 
-  return response;
+  return response?.data;
 };
