@@ -10,7 +10,6 @@ import Button from "components/Button";
 import Dialog from "components/Dialog";
 import DialogContent from "components/Dialog/DialogContent";
 import DialogActions from "components/Dialog/DialogActions";
-import Image from "components/Image";
 import Typography from "components/Typography";
 
 import ReadingBookData from "components/Books/ReadingBookData";
@@ -23,9 +22,6 @@ interface Props {
 const Box = styled.div`
   margin-top: 16px;
 `;
-const FlexBox = styled.div`
-  display: flex;
-`;
 
 const DetailBookDialog = (
   { book, onClose }: Props,
@@ -34,7 +30,7 @@ const DetailBookDialog = (
   const navigate = useNavigate();
 
   const handleClickReadButton = () => {
-    navigate(`/post/review?id=${book.id}`);
+    navigate(`/post/review/${book.id}`);
   };
   return (
     <Dialog ref={ref} style={{ width: "600px" }}>
