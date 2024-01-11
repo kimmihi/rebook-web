@@ -25,7 +25,7 @@ export interface KakaoBook {
   publisher: string;
   translators: string[];
   price: number;
-  sale_price: string;
+  sale_price: number;
   thumbnail: string;
   status: string;
 }

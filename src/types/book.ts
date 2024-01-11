@@ -6,7 +6,7 @@ export interface RegisterReadingBookDTO {
   author: string;
   translator: string;
   isbn: string;
-  sale_price: string;
+  sale_price: number;
   publisher: string;
   thumbnail: string;
   datetime: Date;
