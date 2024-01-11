@@ -2,6 +2,7 @@ import type { ForwardedRef } from "react";
 import type { Book } from "types/book";
 
 import { forwardRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { colors } from "theme";
@@ -12,7 +13,7 @@ import DialogActions from "components/Dialog/DialogActions";
 import Image from "components/Image";
 import Typography from "components/Typography";
 
-import BookDataView from "./BookDataView";
+import ReadingBookData from "components/Books/ReadingBookData";
 
 interface Props {
   book: Book;
@@ -30,27 +31,15 @@ const DetailBookDialog = (
   { book, onClose }: Props,
   ref: ForwardedRef<HTMLDialogElement>
 ) => {
+  const navigate = useNavigate();
+
+  const handleClickReadButton = () => {
+    navigate(`/post/review?id=${book.id}`);
+  };
   return (
     <Dialog ref={ref} style={{ width: "600px" }}>
       <DialogContent style={{ position: "relative" }}>
-        <FlexBox>
-          <Image
-            src={book.thumbnail}
-            alt={book.title}
-            width={150}
-            height={200}
-          />
-          <BookDataView
-            data={{
-              title: book.title,
-              author: book.author,
-              translator: book.translator,
-              sale_price: book.sale_price,
-              publisher: book.publisher,
-              createdAt: book.createdAt,
-            }}
-          />
-        </FlexBox>
+        <ReadingBookData book={book} />
         <Box>
           <Typography style={{ lineHeight: "28px", color: colors.gray[100] }}>
             {book.contents}....
@@ -65,7 +54,11 @@ const DetailBookDialog = (
         >
           닫기
         </Button>
-        <Button variant="contained" color="warning">
+        <Button
+          variant="contained"
+          color="warning"
+          onClick={handleClickReadButton}
+        >
           읽음
         </Button>
       </DialogActions>
