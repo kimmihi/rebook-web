@@ -25,12 +25,12 @@ const Input = styled.input<{ $error: boolean }>`
   outline: none;
   border: ${({ $error }) => ($error ? `1px solid ${colors.error.main}` : 0)};
   color: ${colors.gray[100]};
-  background-color: ${colors.gray[20]};
+  background-color: ${colors.gray[10]};
 `;
 
 const HelperText = styled.p`
   color: ${colors.error.light};
-  font-size: 0.75rem;
+  font-size: 14px;
   margin-top: 4;
 `;
 
