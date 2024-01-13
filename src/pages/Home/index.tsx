@@ -18,7 +18,7 @@ const GridContainer = styled.div`
   margin-top: 32px;
   margin-inline: auto;
   padding-inline: clamp(0, 1.2rem + 0.89vw, 2rem);
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 25rem));
 `;
 
 const Home = () => {
