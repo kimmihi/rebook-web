@@ -13,10 +13,9 @@ import RegisterBook from "./RegisterBook";
 
 const Box = styled.div``;
 
-const MyInfo = () => {
+const Profile = () => {
   const { data, isLoading, isError } = useMyInfo();
 
-  console.log(data);
   return (
     <DashboardLayout>
       <UserCard user={data} loading={isLoading} />
@@ -31,4 +30,4 @@ const MyInfo = () => {
   );
 };
 
-export default withAuthentication(MyInfo);
+export default withAuthentication(Profile);

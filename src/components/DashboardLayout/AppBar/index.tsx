@@ -33,7 +33,7 @@ const AppBar = () => {
   };
 
   const handleClickMyInfo = () => {
-    navigate("/me");
+    navigate("/profile/me");
   };
   return (
     <Header>
