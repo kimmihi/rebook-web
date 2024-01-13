@@ -1,5 +1,7 @@
 import type { Review } from "types/review";
 
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -18,12 +20,16 @@ const Card = styled.div`
   padding: 16px;
   border: 1px solid ${colors.gray[20]};
   border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(226, 230, 233, 0.2);
+  }
 `;
 
 const ReviewDataView = styled.div`
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid ${colors.gray[20]};
+  border-top: 1px solid ${colors.gray[10]};
 `;
 
 const FlexBox = styled.div`
@@ -51,8 +57,13 @@ const ActionBox = styled.div`
 `;
 
 const ReviewCard = ({ review }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClickCard = () => {
+    navigate(`/reviews/${review.id}`);
+  };
   return (
-    <Card>
+    <Card role="button" onClick={handleClickCard}>
       <BookDataView book={review.book} />
       <ReviewDataView>
         <FlexBox>

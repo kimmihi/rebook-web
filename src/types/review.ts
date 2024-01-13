@@ -1,6 +1,7 @@
 import type { Book } from "./book";
+import type { User } from "./user";
 export interface PostReviewDTO extends PostReviewFormFieldValues {
-  bookId: number;
+  book: Book;
 }
 
 export interface PostReviewFormFieldValues {
@@ -26,9 +27,6 @@ export interface Review {
   content: string;
   createdAt: string;
   updatedAt: string;
-  user: {
-    id: number;
-    userId: string;
-  };
-  book: BookInReview;
+  user: User;
+  book: Book;
 }

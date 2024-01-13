@@ -4,7 +4,7 @@ export interface PaginationParams {
 }
 
 export interface PaginatedResponse<T> {
-  data: Array<T>;
+  list: Array<T>;
   page: number;
   size: number;
   total: number;

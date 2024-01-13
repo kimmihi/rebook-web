@@ -3,6 +3,15 @@ import type { PaginationParams, PaginatedResponse } from "types/utility";
 
 import request from "./request";
 
+export const getReviewOne = async (reviewId: number): Promise<Review> => {
+  const response = await request({
+    method: "get",
+    url: `/reviews/${reviewId}`,
+  });
+
+  return response?.data;
+};
+
 export const getReviewList = async (
   params: PaginationParams
 ): Promise<PaginatedResponse<Review>> => {

@@ -1,5 +1,8 @@
-export interface User {
-  name: string;
-  userId: string;
-  email: string;
+import type { SignUpFormFieldValues } from "./auth";
+export interface User
+  extends Pick<
+    SignUpFormFieldValues,
+    "name" | "dateOfBirth" | "email" | "gender" | "userId"
+  > {
+  id: number;
 }

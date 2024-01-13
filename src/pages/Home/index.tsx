@@ -5,6 +5,7 @@ import useReviewList from "hooks/query/review/useReviewList";
 import DashboardLayout from "components/DashboardLayout";
 import TextField from "components/TextField";
 import ReviewCard from "./ReviewCard";
+import EmptyReview from "./EmptyReview";
 
 const SearchBox = styled.div`
   text-align: center;
@@ -21,7 +22,7 @@ const GridContainer = styled.div`
 `;
 
 const Home = () => {
-  const { data } = useReviewList({
+  const { data, isLoading, isError } = useReviewList({
     page: 1,
     size: 10,
   });
@@ -38,11 +39,15 @@ const Home = () => {
           }}
         />
       </SearchBox>
-      <GridContainer>
-        {data?.data.map((review) => (
-          <ReviewCard key={review.id} review={review} />
-        ))}
-      </GridContainer>
+      {data && data.list.length > 0 ? (
+        <GridContainer>
+          {data.list.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </GridContainer>
+      ) : (
+        <EmptyReview />
+      )}
     </DashboardLayout>
   );
 };

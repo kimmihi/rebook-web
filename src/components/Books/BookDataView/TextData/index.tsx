@@ -14,7 +14,14 @@ interface Props {
 
 type BookData = Pick<
   Book,
-  "title" | "author" | "translator" | "sale_price" | "publisher" | "createdAt"
+  | "title"
+  | "author"
+  | "status"
+  | "translator"
+  | "sale_price"
+  | "publisher"
+  | "createdAt"
+  | "updatedAt"
 >;
 
 const Container = styled.div`
@@ -28,7 +35,7 @@ const Box = styled.div`
   line-height: 26px;
 `;
 
-const BookDataView = ({ data }: Props) => {
+const BookTextData = ({ data }: Props) => {
   return (
     <Container>
       <Typography
@@ -49,17 +56,30 @@ const BookDataView = ({ data }: Props) => {
         <TextPairTypo title="출판사" content={data.publisher} />
       </Box>
 
-      <Typography
-        style={{
-          color: colors.gray[80],
-          lineHeight: "24px",
-        }}
-      >
-        {dayjs(data.createdAt).format("YYYY년-MM월-DD일")}부터 읽기
-        시작했습니다.
-      </Typography>
+      {data.status === "READING" ? (
+        <Typography
+          style={{
+            color: colors.gray[80],
+            lineHeight: "24px",
+          }}
+        >
+          {dayjs(data.createdAt).format("YYYY년-MM월-DD일")}부터 읽기
+          시작했습니다.
+        </Typography>
+      ) : (
+        <Typography
+          style={{
+            fontSize: "15px",
+            color: colors.gray[60],
+          }}
+        >
+          {`${dayjs(data.createdAt).format("YYYY년 MM월 DD일")} ~ ${dayjs(
+            data.updatedAt
+          ).format("YYYY년 MM월 DD일")}`}
+        </Typography>
+      )}
     </Container>
   );
 };
 
-export default BookDataView;
+export default BookTextData;

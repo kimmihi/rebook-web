@@ -8,7 +8,7 @@ import { postReview } from "api/review";
 import useBookItem from "hooks/query/book/useBookItem";
 
 import DashboardLayout from "components/DashboardLayout";
-import ReadingBookData from "components/Books/ReadingBookData";
+import BookDataView from "components/Books/BookDataView";
 
 import PostReivewFormLogic from "./Form/Logic";
 
@@ -28,10 +28,14 @@ const PostReview = () => {
   const { data } = useBookItem(bookId);
 
   const handleSubmit = async (formFieldValues: PostReviewFormFieldValues) => {
+    if (data === undefined) {
+      return;
+    }
+
     try {
       await postReview({
         ...formFieldValues,
-        bookId,
+        book: data,
       });
       navigate("/me");
     } catch {
@@ -41,7 +45,14 @@ const PostReview = () => {
 
   return (
     <DashboardLayout>
-      {data && <ReadingBookData book={data} />}
+      {data && (
+        <BookDataView
+          book={data}
+          status="READING"
+          imgWidth={150}
+          imgHeight={200}
+        />
+      )}
       <Box>
         <PostReivewFormLogic onSubmit={handleSubmit} />
       </Box>

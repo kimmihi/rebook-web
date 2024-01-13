@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { colors } from "theme";
 import Image from "components/Image";
 import Typography from "components/Typography";
-import TextPairTypo from "components/Books/ReadingBookData/BookDataView/TextPairTypo";
+import TextPairTypo from "components/Books/BookDataView/TextData/TextPairTypo";
 
 interface Props {
   book: BookInReview;

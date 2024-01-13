@@ -12,7 +12,7 @@ import DialogContent from "components/Dialog/DialogContent";
 import DialogActions from "components/Dialog/DialogActions";
 import Typography from "components/Typography";
 
-import ReadingBookData from "components/Books/ReadingBookData";
+import BookDataView from "components/Books/BookDataView";
 
 interface Props {
   book: Book;
@@ -35,7 +35,12 @@ const DetailBookDialog = (
   return (
     <Dialog ref={ref} style={{ width: "600px" }}>
       <DialogContent style={{ position: "relative" }}>
-        <ReadingBookData book={book} />
+        <BookDataView
+          book={book}
+          status="READING"
+          imgWidth={150}
+          imgHeight={200}
+        />
         <Box>
           <Typography style={{ lineHeight: "28px", color: colors.gray[100] }}>
             {book.contents}....
