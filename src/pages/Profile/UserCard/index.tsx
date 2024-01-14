@@ -1,5 +1,7 @@
 import type { User } from "types/user";
 
+import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import { colors } from "theme";
 
@@ -24,6 +26,12 @@ const Container = styled.div`
 const Box = styled.div``;
 
 const UserCard = ({ user, loading }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClickLogout = () => {
+    localStorage.removeItem("accessToken");
+    navigate("/signin");
+  };
   return (
     <Container>
       <Box style={{ lineHeight: "24px" }}>
@@ -38,7 +46,12 @@ const UserCard = ({ user, loading }: Props) => {
         >
           정보 수정
         </Button>
-        <Button variant="contained" color="warning" style={{ height: "36px" }}>
+        <Button
+          variant="contained"
+          color="warning"
+          style={{ height: "36px" }}
+          onClick={handleClickLogout}
+        >
           로그 아웃
         </Button>
       </Box>
