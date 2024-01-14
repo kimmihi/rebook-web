@@ -32,6 +32,8 @@ const ReviewDataView = styled.div`
   border-top: 1px solid ${colors.gray[10]};
 `;
 
+const Box = styled.div``;
+
 const FlexBox = styled.div`
   display: flex;
   align-items: center;
@@ -66,15 +68,19 @@ const ReviewCard = ({ review }: Props) => {
     <Card role="button" onClick={handleClickCard}>
       <BookDataView book={review.book} />
       <ReviewDataView>
-        <FlexBox>
+        <Box>
+          <Typography>{review.user.userId}님</Typography>
           <Typography
             variant="sub-title"
-            style={{ color: colors.primary.light, fontSize: "20px" }}
+            style={{
+              color: colors.primary.light,
+              fontSize: "20px",
+              marginTop: "8px",
+            }}
           >
             {review.title}
           </Typography>
-          <Typography>{review.user.userId}님</Typography>
-        </FlexBox>
+        </Box>
         <ContentBox>{review.content}</ContentBox>
       </ReviewDataView>
       <ActionBox>

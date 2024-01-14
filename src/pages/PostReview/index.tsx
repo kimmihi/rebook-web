@@ -37,7 +37,7 @@ const PostReview = () => {
         ...formFieldValues,
         book: data,
       });
-      navigate("/me");
+      navigate("/profile/me");
     } catch {
       console.error("Error Post Reivew");
     }
